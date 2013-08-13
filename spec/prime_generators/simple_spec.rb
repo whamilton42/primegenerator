@@ -4,7 +4,7 @@ require 'prime_generator/simple'
 describe PrimeGenerator::Simple do
 	let(:known_primes) { [2, 3, 29, 1801, 4357]}
 	let(:not_primes) { [1, 4, 39, 1003, 6017]}
-	let(:generator) { PrimeGenerator::Simple.new }
+	let(:generator) { PrimeGenerator::Simple }
 
 	describe "#is_prime?" do
 		it "should return true for all known primes" do
