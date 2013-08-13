@@ -1,0 +1,4 @@
+primegenerator
+==============
+
+Generates prime numbers
