@@ -18,5 +18,9 @@ class PrimeGenerator::Simple
 			end
 			primes
 		end
+
+		def nth_prime(n)
+			first_n_primes(n).last
+		end
 	end
 end
