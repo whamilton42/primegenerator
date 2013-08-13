@@ -5,15 +5,17 @@ class PrimeGenerator::Erastothenes
 	def take(n)
 		candidates = (2..UPPER_BOUND).to_a
 
-		prime = nil
+		p = nil
 		primes = []
 
-		while prime = candidates.detect { |candidate| candidate > (prime || 1) }
+		while prime = candidates.detect { |candidate| candidate > (p || 1) }
+			p = prime
 			primes << prime
 			return primes if primes.length == n
 
-			(prime..UPPER_BOUND).each do |multiplier|
-				candidates.delete_if { |candidate| candidate == (prime * multiplier) }
+			while prime < UPPER_BOUND
+				prime += p
+				candidates.delete_if { |candidate| candidate == prime }
 			end
 		end
 	end
