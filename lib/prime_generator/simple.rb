@@ -4,13 +4,18 @@ class PrimeGenerator::Simple < Enumerator
 		super do |yielder|
 			candidate = 2
 			loop do
-				yielder << candidate if self.class.is_prime?(candidate)
+				yielder << candidate if is_prime?(candidate)
 				candidate += 1
 			end
 		end
 	end
 
-	class << self
+	def nth(n)
+		take(n).last
+	end
+
+	private
+
 		def is_prime?(number)
 			return false if number == 1
 			(2...number).each do |divisor|
@@ -19,12 +24,4 @@ class PrimeGenerator::Simple < Enumerator
 			true
 		end
 
-		def first_n_primes(n)
-			new.take(n)
-		end
-
-		def nth_prime(n)
-			first_n_primes(n).last
-		end
-	end
 end
