@@ -8,19 +8,18 @@ class PrimeGenerator::Erastothenes
 		# 	{num: 4, possibly_prime: true}
 		# ]
 		candidates = (2..UPPER_BOUND).each_with_object([]) do |candidate, candidates|
-			candidates << {num: candidate, possibly_prime: true}
+			candidates << candidate
 		end
 
 		prime = nil
 		primes = []
 
-		while candidate = candidates.detect { |candidate| candidate[:possibly_prime] and candidate[:num] > (prime || 1) }
-			prime = candidate[:num]
+		while prime = candidates.detect { |candidate| candidate > (prime || 1) }
 			primes << prime
 			return primes if primes.length == n
 
 			(prime..UPPER_BOUND).each do |multiplier|
-				candidates.delete_if { |candidate| candidate[:num] == (prime * multiplier) }
+				candidates.delete_if { |candidate| candidate == (prime * multiplier) }
 			end
 		end
 	end
