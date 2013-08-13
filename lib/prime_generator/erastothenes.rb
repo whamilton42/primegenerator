@@ -15,7 +15,7 @@ class PrimeGenerator::Erastothenes
 
 			while prime < UPPER_BOUND
 				prime += p
-				candidates.delete_if { |candidate| candidate == prime }
+				candidates.delete(prime)
 			end
 		end
 	end
