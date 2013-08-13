@@ -15,4 +15,16 @@ describe PrimeGenerator::Simple do
 			not_primes.each { |prime| expect(generator.is_prime?(prime)).to be_false }
 		end
 	end
+
+	describe "#first_n_primes" do
+		it "should return the number of primes asked for" do
+			number_of_primes = 5
+			expect(generator.first_n_primes(number_of_primes).length).to eql(number_of_primes)
+		end
+
+		it "should return the first 10 primes" do
+			first_ten_primes = [2,3,5,7,11,13,17,19,23,29]
+			expect(generator.first_n_primes(10)).to match_array(first_ten_primes)
+		end
+	end
 end

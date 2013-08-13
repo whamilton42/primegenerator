@@ -9,4 +9,14 @@ class PrimeGenerator::Simple
 		true
 	end
 
+	def first_n_primes(n)
+		primes = []
+		candidate = 1
+		while primes.length < n
+			primes << candidate if is_prime?(candidate)
+			candidate += 1
+		end
+		primes
+	end
+
 end
