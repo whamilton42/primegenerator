@@ -1,4 +1,4 @@
-require 'prime_generator'
+require_relative '../prime_generator'
 class PrimeGenerator::Simple
 	class << self
 		def is_prime?(number)
