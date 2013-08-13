@@ -3,13 +3,7 @@ class PrimeGenerator::Erastothenes
 	UPPER_BOUND = 100
 
 	def take(n)
-		# [
-		# 	{num: 3, possibly_prime: true},
-		# 	{num: 4, possibly_prime: true}
-		# ]
-		candidates = (2..UPPER_BOUND).each_with_object([]) do |candidate, candidates|
-			candidates << candidate
-		end
+		candidates = (2..UPPER_BOUND).to_a
 
 		prime = nil
 		primes = []
