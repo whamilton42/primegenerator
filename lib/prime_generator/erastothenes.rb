@@ -20,10 +20,7 @@ class PrimeGenerator::Erastothenes
 			return primes if primes.length == n
 
 			(prime..UPPER_BOUND).each do |multiplier|
-				candidate_to_remove = candidates.detect { |candidate| candidate[:num] == (prime * multiplier) }
-				if candidate_to_remove
-					candidate_to_remove[:possibly_prime] = false
-				end
+				candidates.delete_if { |candidate| candidate[:num] == (prime * multiplier) }
 			end
 		end
 	end
