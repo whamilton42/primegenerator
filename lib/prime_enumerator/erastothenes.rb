@@ -28,7 +28,8 @@ class PrimeEnumerator::Erastothenes < PrimeEnumerator
           @prime += 1
         end
 
-        raise StopIteration
+        # If we're beyond the upper bound, we can safely assume that all of the remaining numbers are primes.
+        (2...@upper_bound).find_all { |i| i > @prime and @candidates[i] }.each { |prime| yielder << prime }
       end
     end
   end
