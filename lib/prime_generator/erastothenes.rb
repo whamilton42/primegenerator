@@ -7,7 +7,6 @@ class PrimeGenerator::Erastothenes
 		candidates = range.collect { |num| true }
 
 		prime = 2
-		p = nil
 		primes = []
 
 		while prime*prime < UPPER_BOUND
