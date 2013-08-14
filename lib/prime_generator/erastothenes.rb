@@ -1,41 +1,40 @@
 require_relative '../prime_generator'
-class PrimeGenerator::Erastothenes
-	attr_reader :upper_bound
-	def initialize(args)
-		@upper_bound = args.fetch(:upper_bound)
-	end
+class PrimeGenerator::Erastothenes < Enumerator
+  attr_reader :upper_bound, :candidates, :prime
 
-	def take(n)
-		candidates = (0..@upper_bound).collect { |num| true }
+  def initialize(args)
+    @upper_bound = args.fetch(:upper_bound)
+    @candidates = (0..@upper_bound).collect { |num| true }
+    @prime = 2
 
-		prime = 2
-		primes = []
+    super() do |yielder|
+      loop do
 
-		while prime*prime <= @upper_bound
-			if candidates[prime]
-				primes << prime
-				return primes if primes.length == n
+        while @prime*prime <= @upper_bound
+          if @candidates[@prime]
+            yielder << @prime
 
-				eliminate = prime*prime
-				while eliminate < @upper_bound
-					candidates[eliminate] = false
-					eliminate += prime
-				end
-			end
+            eliminate = @prime*@prime
+            if eliminate > @upper_bound
+              raise StopIteration
+            else
+              while eliminate < @upper_bound
+                @candidates[eliminate] = false
+                eliminate += @prime
+              end
+            end
+          end
 
-			prime += 1
-		end
+          @prime += 1
+        end
 
-		primes = (2..@upper_bound).find_all { |num| candidates[num] }[0...n]
-		if primes.length == n
-			primes
-		else
-			raise "An upper-limit of #{@upper_bound} is not sufficient to find #{n} primes. Only found #{primes.length}."
-		end
-	end
+        raise StopIteration
+      end
+    end
+  end
 
-	def nth(n)
-		take(n).last
-	end
+  def nth(n)
+    take(n).last
+  end
 
 end
