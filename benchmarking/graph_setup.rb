@@ -17,8 +17,6 @@ require_relative '../lib/prime_enumerator/lazy_erastothenes'
 	@results[enumerator.class] = []
 
 	@ns.each do |n|
-		start_time = Time.now
-
 		puts "#{enumerator.class} - #{n}"
 		if upper_bound = enumerator.instance_variable_get("@upper_bound")
 			enumerator = enumerator.class.new(upper_bound: upper_bound)
@@ -26,8 +24,7 @@ require_relative '../lib/prime_enumerator/lazy_erastothenes'
 			enumerator = enumerator.class.new
 		end
 
-		enumerator.take(n)
-
-		@results[enumerator.class] << (Time.now.to_f - start_time.to_f) / 1000
+		b = Benchmark.measure { enumerator.take(n) }
+		@results[enumerator.class] << b.real
 	end
 end
