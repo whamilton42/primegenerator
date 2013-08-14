@@ -1,6 +1,9 @@
 primeenumerator
 ==============
 
+Tested with `ruby-2.0.0-p247`
+
+
 Call `ruby runner.rb` for an example of what the application can do.
 
 Call `ruby benchmarking/profile.rb` for benchmark tests.
