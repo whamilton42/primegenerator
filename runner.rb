@@ -2,7 +2,7 @@ require_relative 'lib/prime_multiplication_table_printer'
 require_relative 'lib/prime_enumerator/simple'
 require_relative 'lib/prime_enumerator/erastothenes'
 
-enumerators = [Primeenumerator::Erastothenes.new(upper_bound: 1_000_000), Primeenumerator::Simple.new]
+enumerators = [PrimeEnumerator::Erastothenes.new(upper_bound: 1_000_000), PrimeEnumerator::Simple.new]
 
 enumerators.each do |enumerator|
 	puts "Using #{enumerator} enumerator"
