@@ -2,15 +2,15 @@ require 'timeout'
 
 require_relative 'lib/prime_multiplication_table_printer'
 require_relative 'lib/prime_enumerator/trial_division'
-require_relative 'lib/prime_enumerator/erastothenes'
-require_relative 'lib/prime_enumerator/curried_erastothenes'
-require_relative 'lib/prime_enumerator/lazy_erastothenes'
+require_relative 'lib/prime_enumerator/eratosthenes'
+require_relative 'lib/prime_enumerator/curried_eratosthenes'
+require_relative 'lib/prime_enumerator/lazy_eratosthenes'
 
 enumerators = []
-enumerators << PrimeEnumerator::Erastothenes.new(upper_bound: 1_000_000)
-enumerators << PrimeEnumerator::CurriedErastothenes.new
+enumerators << PrimeEnumerator::Eratosthenes.new(upper_bound: 1_000_000)
+enumerators << PrimeEnumerator::CurriedEratosthenes.new
 enumerators << PrimeEnumerator::TrialDivision.new
-enumerators << PrimeEnumerator::LazyErastothenes.new
+enumerators << PrimeEnumerator::LazyEratosthenes.new
 
 enumerators.each do |enumerator|
   puts enumerator.class

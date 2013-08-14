@@ -34,13 +34,13 @@ $(function () {
       },
       series: [{
         
-          name: 'PrimeEnumerator::Erastothenes',
+          name: 'PrimeEnumerator::Eratosthenes',
           data: [1, 2, 3]
         
-          name: 'PrimeEnumerator::LazyErastothenes',
+          name: 'PrimeEnumerator::LazyEratosthenes',
           data: [1, 2, 3]
         
-          name: 'PrimeEnumerator::CurriedErastothenes',
+          name: 'PrimeEnumerator::CurriedEratosthenes',
           data: [1, 2, 3]
         
           name: 'PrimeEnumerator::TrialDivision',

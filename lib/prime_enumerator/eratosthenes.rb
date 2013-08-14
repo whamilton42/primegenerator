@@ -1,5 +1,5 @@
 require_relative '../prime_enumerator'
-class PrimeEnumerator::Erastothenes < PrimeEnumerator
+class PrimeEnumerator::Eratosthenes < PrimeEnumerator
 
   def initialize(args)
     upper_bound = args.fetch(:upper_bound)

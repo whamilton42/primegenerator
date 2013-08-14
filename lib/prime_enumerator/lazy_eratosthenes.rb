@@ -1,5 +1,5 @@
 require_relative '../prime_enumerator'
-class PrimeEnumerator::LazyErastothenes < PrimeEnumerator
+class PrimeEnumerator::LazyEratosthenes < PrimeEnumerator
 
   def initialize
     candidate = 2

@@ -1,13 +1,13 @@
 require 'benchmark'
 require_relative '../lib/prime_enumerator/trial_division'
-require_relative '../lib/prime_enumerator/erastothenes'
-require_relative '../lib/prime_enumerator/curried_erastothenes'
-require_relative '../lib/prime_enumerator/lazy_erastothenes'
+require_relative '../lib/prime_enumerator/eratosthenes'
+require_relative '../lib/prime_enumerator/curried_eratosthenes'
+require_relative '../lib/prime_enumerator/lazy_eratosthenes'
 
 @enumerators = []
-@enumerators << PrimeEnumerator::Erastothenes.new(upper_bound: 1_000_000)
-@enumerators << PrimeEnumerator::LazyErastothenes.new
-@enumerators << PrimeEnumerator::CurriedErastothenes.new
+@enumerators << PrimeEnumerator::Eratosthenes.new(upper_bound: 1_000_000)
+@enumerators << PrimeEnumerator::LazyEratosthenes.new
+@enumerators << PrimeEnumerator::CurriedEratosthenes.new
 @enumerators << PrimeEnumerator::TrialDivision.new
 
 @ns = (1..20).collect { |num| num * 100 }
