@@ -23,18 +23,11 @@ class PrimeGenerator::Erastothenes
 			prime += 1
 		end
 
-		return returned_primes(candidates: candidates, n: n)
+		return (2..UPPER_BOUND).find_all { |num| candidates[num] }[0...n]
 	end
 
 	def nth(n)
 		take(n).last
 	end
-
-
-	private
-
-		def returned_primes(args)
-			(2..UPPER_BOUND).find_all { |num| args.fetch(:candidates)[num] }[0...args.fetch(:n)]
-		end
 
 end
