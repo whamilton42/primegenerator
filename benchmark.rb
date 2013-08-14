@@ -12,25 +12,22 @@ def enumerators
   enumerators << PrimeEnumerator::TrialDivision.new
 end
 
-label_width = enumerators.map { |enumerator| enumerator.to_s.length }.max + 20
+label_width = enumerators.map { |enumerator| enumerator.class.name.length }.max + 15
 
-n = 10
-Benchmark.bm(label_width) do |x|
-	enumerators.each do |enumerator|
-		x.report("take(#{n}) -- #{enumerator}") { enumerator.take(n) }
+require 'timeout'
+allowed_duration = 10
+[10, 500, 65_000].each do |n|
+	Benchmark.bm(label_width) do |x|
+		enumerators.each do |enumerator|
+			x.report("take(#{n}) -- #{enumerator.class}") do
+				begin
+					Timeout::timeout(allowed_duration) do
+						enumerator.take(n)
+					end
+				rescue Timeout::Error
+					print "took too long (> #{allowed_duration} seconds)"
+				end
+			end
+		end
 	end
-end
-
-n = 500
-Benchmark.bm(label_width) do |x|
-	enumerators.each do |enumerator|
-		x.report("take(#{n}) -- #{enumerator}") { enumerator.take(n) }
-	end
-end
-
-n = 65_000
-Benchmark.bm(label_width) do |x|
-  enumerators.each do |enumerator|
-    x.report("take(#{n}) -- #{enumerator}") { enumerator.take(n) }
-  end
 end
