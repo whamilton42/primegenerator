@@ -1,6 +1,6 @@
 require_relative '../prime_generator'
 class PrimeGenerator::Erastothenes
-	UPPER_BOUND = 100
+	UPPER_BOUND = 10_000
 
 	def take(n)
 		range = (0..UPPER_BOUND)
@@ -10,23 +10,22 @@ class PrimeGenerator::Erastothenes
 		p = nil
 		primes = []
 
-		while prime < UPPER_BOUND
-			return returned_primes(candidates: candidates, n: n) if prime*prime > UPPER_BOUND
-
+		while prime*prime < UPPER_BOUND
 			if candidates[prime]
-				p = prime
 				primes << prime
 				return returned_primes(candidates: candidates, n: n) if primes.length == n
 
-				p *= p
-				while p < UPPER_BOUND
-					candidates[p] = false
-					p += prime
+				eliminate = prime*prime
+				while eliminate < UPPER_BOUND
+					candidates[eliminate] = false
+					eliminate += prime
 				end
 			end
 
 			prime += 1
 		end
+
+		return returned_primes(candidates: candidates, n: n)
 	end
 
 	def nth(n)
