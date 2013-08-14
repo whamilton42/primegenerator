@@ -4,11 +4,13 @@ require_relative 'lib/prime_enumerator/erastothenes'
 require_relative 'lib/prime_enumerator/curried_erastothenes'
 require_relative 'lib/prime_enumerator/lazy_erastothenes'
 
-enumerators = []
-enumerators << PrimeEnumerator::Erastothenes.new(upper_bound: 1_000_000)
-enumerators << PrimeEnumerator::LazyErastothenes.new
-enumerators << PrimeEnumerator::CurriedErastothenes.new
-enumerators << PrimeEnumerator::TrialDivision.new
+def enumerators
+  enumerators = []
+  enumerators << PrimeEnumerator::Erastothenes.new(upper_bound: 1_000_000)
+  enumerators << PrimeEnumerator::CurriedErastothenes.new
+  enumerators << PrimeEnumerator::LazyErastothenes.new
+  enumerators << PrimeEnumerator::TrialDivision.new
+end
 
 label_width = enumerators.map { |enumerator| enumerator.to_s.length }.max + 20
 
