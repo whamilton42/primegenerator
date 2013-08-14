@@ -7,8 +7,8 @@ require_relative 'lib/prime_enumerator/lazy_erastothenes'
 def enumerators
   enumerators = []
   enumerators << PrimeEnumerator::Erastothenes.new(upper_bound: 1_000_000)
-  enumerators << PrimeEnumerator::CurriedErastothenes.new
   enumerators << PrimeEnumerator::LazyErastothenes.new
+  enumerators << PrimeEnumerator::CurriedErastothenes.new
   enumerators << PrimeEnumerator::TrialDivision.new
 end
 
