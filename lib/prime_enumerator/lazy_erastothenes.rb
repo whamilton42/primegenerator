@@ -9,15 +9,15 @@ class PrimeEnumerator::LazyErastothenes < PrimeEnumerator
       loop do
         prime = true
 
-        eliminators.each do |eliminator|
-          if eliminator[:composite] == candidate
-            eliminator[:composite] = eliminator[:composite] + eliminator[:prime]
+        eliminators.each_with_index do |eliminator, index|
+          if eliminator == candidate
+            eliminators[index] += index
             prime = false
           end
         end
 
         if prime
-          eliminators << {prime: candidate, composite: candidate*candidate}
+          eliminators[candidate] = candidate*candidate
           yielder << candidate
         end
 
