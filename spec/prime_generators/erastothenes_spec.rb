@@ -4,7 +4,8 @@ require 'prime_generator/erastothenes'
 describe PrimeGenerator::Erastothenes do
 	let(:first_set_of_primes) { [2,3,5,7,11,13,17,19,23,29] }
 	let(:not_primes) { [1, 4, 39, 1003, 6017]}
-	let(:generator) { PrimeGenerator::Erastothenes.new }
+	let(:sensible_upper_bound) { 10_000 }
+	let(:generator) { PrimeGenerator::Erastothenes.new(upper_bound: sensible_upper_bound) }
 
 	describe "#first_n_primes" do
 		it "should return the first set of primes" do
