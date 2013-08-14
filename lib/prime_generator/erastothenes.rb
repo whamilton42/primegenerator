@@ -23,7 +23,12 @@ class PrimeGenerator::Erastothenes
 			prime += 1
 		end
 
-		return (2..UPPER_BOUND).find_all { |num| candidates[num] }[0...n]
+		primes = (2..UPPER_BOUND).find_all { |num| candidates[num] }[0...n]
+		if primes.length == n
+			primes
+		else
+			raise "An upper-limit of #{UPPER_BOUND} is not sufficient to find #{n} primes. Only found #{primes.length}."
+		end
 	end
 
 	def nth(n)

@@ -2,7 +2,7 @@ require_relative 'lib/prime_multiplication_table_printer'
 require_relative 'lib/prime_generator/simple'
 require_relative 'lib/prime_generator/erastothenes'
 
-generators = [PrimeGenerator::Simple.new, PrimeGenerator::Erastothenes.new]
+generators = [PrimeGenerator::Erastothenes.new, PrimeGenerator::Simple.new]
 
 generators.each do |generator|
 	puts "Using #{generator} generator"
@@ -12,7 +12,8 @@ generators.each do |generator|
 	puts "Multiplication table of first #{number_of_primes} primes"
 	printer.output(outputter: Proc.new{|output| puts output })
 
-	n = 1000
-	nth_prime = generator.nth(n)
-	puts "Calculation of #{n}th prime: #{nth_prime}"
+  [1_000, 65_000].each do |n|
+  	nth_prime = generator.nth(n)
+  	puts "Calculation of #{n}th prime: #{nth_prime}"
+  end
 end
