@@ -8,7 +8,7 @@ class PrimeGenerator::Erastothenes
 		prime = 2
 		primes = []
 
-		while prime*prime < UPPER_BOUND
+		while prime*prime <= UPPER_BOUND
 			if candidates[prime]
 				primes << prime
 				return returned_primes(candidates: candidates, n: n) if primes.length == n
