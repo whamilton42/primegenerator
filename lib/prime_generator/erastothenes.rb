@@ -3,8 +3,7 @@ class PrimeGenerator::Erastothenes
 	UPPER_BOUND = 10_000
 
 	def take(n)
-		range = (0..UPPER_BOUND)
-		candidates = range.collect { |num| true }
+		candidates = (0..UPPER_BOUND).collect { |num| true }
 
 		prime = 2
 		primes = []
