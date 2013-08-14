@@ -3,7 +3,7 @@ class PrimeMultiplicationTablePrinter
 
 	def initialize(args)
 		@number_of_primes = args.fetch(:number_of_primes)
-		@primes = args.fetch(:prime_number_generator).call(@number_of_primes)
+		@primes = args.fetch(:prime_number_enumerator).call(@number_of_primes)
 		@multiplication_table_string = generate_multiplication_table_string
 	end
 

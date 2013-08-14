@@ -1,18 +1,22 @@
 require 'benchmark'
-require_relative 'lib/prime_generator/simple'
-require_relative 'lib/prime_generator/erastothenes'
+require_relative 'lib/prime_enumerator/simple'
+require_relative 'lib/prime_enumerator/erastothenes'
+require_relative 'lib/prime_enumerator/erastothenes_enumerator'
 
-generators = [PrimeGenerator::Simple.new, PrimeGenerator::Erastothenes.new(upper_bound: 10_000)]
-label_width = generators.map { |generator| generator.to_s.length }.max + 15
+enumerators = []
+enumerators << Primeenumerator::Erastothenes.new(upper_bound: 10_000)
+enumerators << Primeenumerator::Simple.new
+
+label_width = enumerators.map { |enumerator| enumerator.to_s.length }.max + 20
 
 Benchmark.bm(label_width) do |x|
-	generators.each do |generator|
-		x.report("take(10) -- #{generator}") { generator.take(10) }
+	enumerators.each do |enumerator|
+		x.report("take(10) -- #{enumerator}") { enumerator.take(10) }
 	end
 end
 
 Benchmark.bm(label_width) do |x|
-	generators.each do |generator|
-		x.report("take(500) -- #{generator}") { generator.take(500) }
+	enumerators.each do |enumerator|
+		x.report("take(500) -- #{enumerator}") { enumerator.take(500) }
 	end
 end

@@ -1,5 +1,5 @@
-require_relative '../prime_generator'
-class PrimeGenerator::Simple < Enumerator
+require_relative '../prime_enumerator'
+class PrimeEnumerator::Simple < PrimeEnumerator
 	def initialize
 		super do |yielder|
 			candidate = 2
@@ -8,10 +8,6 @@ class PrimeGenerator::Simple < Enumerator
 				candidate += 1
 			end
 		end
-	end
-
-	def nth(n)
-		take(n).last
 	end
 
 	private

@@ -1,5 +1,5 @@
-require_relative '../prime_generator'
-class PrimeGenerator::Erastothenes < Enumerator
+require_relative '../prime_enumerator'
+class PrimeEnumerator::Erastothenes < PrimeEnumerator
   attr_reader :upper_bound, :candidates, :prime
 
   def initialize(args)
@@ -31,10 +31,6 @@ class PrimeGenerator::Erastothenes < Enumerator
         raise StopIteration
       end
     end
-  end
-
-  def nth(n)
-    take(n).last
   end
 
 end
