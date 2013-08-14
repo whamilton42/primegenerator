@@ -26,8 +26,8 @@ enumerators.each do |enumerator|
   [1_000, 65_000].each do |n|
     begin
       Timeout::timeout(grace) do
+      	print "Calculation of #{n}th prime: "
         nth_prime = enumerator.nth(n)
-        print "Calculation of #{n}th prime: "
         print nth_prime
       end
     rescue Timeout::Error
