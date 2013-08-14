@@ -11,7 +11,7 @@ class PrimeGenerator::Erastothenes
 		while prime*prime <= UPPER_BOUND
 			if candidates[prime]
 				primes << prime
-				return returned_primes(candidates: candidates, n: n) if primes.length == n
+				return primes if primes.length == n
 
 				eliminate = prime*prime
 				while eliminate < UPPER_BOUND
