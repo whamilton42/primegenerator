@@ -1,8 +1,8 @@
 require_relative '../prime_enumerator'
 class PrimeEnumerator::Eratosthenes < PrimeEnumerator
 
-  def initialize(args)
-    upper_bound = args.fetch(:upper_bound)
+  def initialize(*args)
+    upper_bound = (args.any? and args[:upper_bound]) ? args[:upper_bound] : 1_000_000
    	candidates = (0..upper_bound).collect { |num| true }
     prime = 2
 
