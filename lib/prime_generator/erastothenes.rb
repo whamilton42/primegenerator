@@ -3,29 +3,41 @@ class PrimeGenerator::Erastothenes
 	UPPER_BOUND = 100
 
 	def take(n)
-		candidates = (2..UPPER_BOUND).to_a
+		range = (0..UPPER_BOUND)
+		candidates = range.collect { |num| true }
 
-		prime = 1
+		prime = 2
 		p = nil
 		primes = []
 
-		while prime = candidates.detect { |candidate| candidate > (prime || 1) }
-			return candidates[0...n] if prime*prime > UPPER_BOUND
+		while prime < UPPER_BOUND
+			return returned_primes(candidates: candidates, n: n) if prime*prime > UPPER_BOUND
 
-			p = prime
-			primes << prime
-			return primes if primes.length == n
+			if candidates[prime]
+				p = prime
+				primes << prime
+				return returned_primes(candidates: candidates, n: n) if primes.length == n
 
-			p *= p
-			while p < UPPER_BOUND
-				candidates.delete(p)
-				p += prime
+				p *= p
+				while p < UPPER_BOUND
+					candidates[p] = false
+					p += prime
+				end
 			end
+
+			prime += 1
 		end
 	end
 
 	def nth(n)
 		take(n).last
 	end
+
+
+	private
+
+		def returned_primes(args)
+			(2..UPPER_BOUND).find_all { |num| args.fetch(:candidates)[num] }[0...args.fetch(:n)]
+		end
 
 end
