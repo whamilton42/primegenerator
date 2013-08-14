@@ -1,5 +1,5 @@
 require_relative '../prime_enumerator'
-class PrimeEnumerator::Simple < PrimeEnumerator
+class PrimeEnumerator::TrialDivision < PrimeEnumerator
 	def initialize
 		super do |yielder|
 			candidate = 2
