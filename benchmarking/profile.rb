@@ -1,8 +1,8 @@
 require 'benchmark'
-require_relative 'lib/prime_enumerator/trial_division'
-require_relative 'lib/prime_enumerator/erastothenes'
-require_relative 'lib/prime_enumerator/curried_erastothenes'
-require_relative 'lib/prime_enumerator/lazy_erastothenes'
+require_relative '../lib/prime_enumerator/trial_division'
+require_relative '../lib/prime_enumerator/erastothenes'
+require_relative '../lib/prime_enumerator/curried_erastothenes'
+require_relative '../lib/prime_enumerator/lazy_erastothenes'
 
 def enumerators
   enumerators = []

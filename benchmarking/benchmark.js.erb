@@ -1,0 +1,48 @@
+<% load 'benchmarking/graph_setup.rb' %>
+
+$(function () {
+  $('#benchmark-graph').highcharts({
+      title: {
+          text: 'Prime Enumerators',
+          x: -20 //center
+      },
+      subtitle: {
+          text: 'Performance',
+          x: -20
+      },
+      xAxis: {
+          categories: <%= @ns.inspect %>,
+          title: {
+            text: 'Number of primes generated'
+          }
+      },
+      yAxis: {
+          title: {
+              text: 'Time (milliseconds)'
+          },
+          plotLines: [{
+              value: 0,
+              width: 1,
+              color: '#808080'
+          }],
+          min: 0
+      },
+      tooltip: {
+          valueSuffix: 'milliseconds'
+      },
+      legend: {
+          layout: 'vertical',
+          align: 'right',
+          verticalAlign: 'middle',
+          borderWidth: 0
+      },
+      series: [
+        <% @enumerators.each do |enumerator| %>
+          {
+            name: '<%= enumerator.class %>',
+            data: <%= @results[enumerator.class].inspect %>
+          },
+        <% end %>
+      ]
+  });
+});
