@@ -10,6 +10,8 @@ class PrimeGenerator::Erastothenes
 		primes = []
 
 		while prime = candidates.detect { |candidate| candidate > (prime || 1) }
+			return candidates[0...n] if prime*prime > UPPER_BOUND
+
 			p = prime
 			primes << prime
 			return primes if primes.length == n
