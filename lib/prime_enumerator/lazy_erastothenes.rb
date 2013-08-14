@@ -3,15 +3,23 @@ class PrimeEnumerator::LazyErastothenes < PrimeEnumerator
 
   def initialize
     candidate = 2
-    eliminators = []
+    eliminators = {}
+    # {
+    # 	0 => nil,
+    # 	1 => nil,
+    # 	2 => 4,
+    # 	3 => 9,
+    # 	4 => nil,
+    # 	5 => 25
+    # }
 
     super() do |yielder|
       loop do
         prime = true
 
-        eliminators.each_with_index do |eliminator, index|
-          if eliminator == candidate
-            eliminators[index] += index
+        eliminators.each do |original, composite|
+          if composite == candidate
+            eliminators[original] += original
             prime = false
           end
         end
