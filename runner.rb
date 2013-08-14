@@ -1,7 +1,8 @@
 require_relative 'lib/prime_multiplication_table_printer'
 require_relative 'lib/prime_generator/simple'
+require_relative 'lib/prime_generator/erastothenes'
 
-generators = [PrimeGenerator::Simple.new]
+generators = [PrimeGenerator::Simple.new, PrimeGenerator::Erastothenes.new]
 
 generators.each do |generator|
 	puts "Using #{generator} generator"
