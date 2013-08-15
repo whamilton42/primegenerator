@@ -39,8 +39,8 @@ $(function () {
       series: [
         <% @enumerators.each do |enumerator| %>
           {
-            name: '<%= enumerator.class %>',
-            data: <%= @results[enumerator.class].inspect %>
+            name: '<%= enumerator %>',
+            data: <%= @results[enumerator].inspect %>
           },
         <% end %>
       ]
