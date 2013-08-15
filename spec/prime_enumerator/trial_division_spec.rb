@@ -6,6 +6,6 @@ include PrimeEnumerator::EnumeratorSpecHelper
 require 'prime_enumerator/trial_division'
 
 describe PrimeEnumerator::TrialDivision do
-	let(:enumerator) { PrimeEnumerator::TrialDivision.new }
-	common_enumerator_specs
+  let(:enumerator) { PrimeEnumerator::TrialDivision.new }
+  common_enumerator_specs
 end

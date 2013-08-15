@@ -5,12 +5,12 @@ class PrimeEnumerator::LazyEratosthenes < PrimeEnumerator
     candidate = 2
     eliminators = {}
     # {
-    # 	0 => nil,
-    # 	1 => nil,
-    # 	2 => 4,
-    # 	3 => 9,
-    # 	4 => nil,
-    # 	5 => 25
+    #   0 => nil,
+    #   1 => nil,
+    #   2 => 4,
+    #   3 => 9,
+    #   4 => nil,
+    #   5 => 25
     # }
 
     super() do |yielder|

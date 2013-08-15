@@ -6,6 +6,6 @@ include PrimeEnumerator::EnumeratorSpecHelper
 require 'prime_enumerator/curried_eratosthenes'
 
 describe PrimeEnumerator::CurriedEratosthenes do
-	let(:enumerator) { PrimeEnumerator::CurriedEratosthenes.new }
-	common_enumerator_specs
+  let(:enumerator) { PrimeEnumerator::CurriedEratosthenes.new }
+  common_enumerator_specs
 end

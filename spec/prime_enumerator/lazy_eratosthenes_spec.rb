@@ -6,6 +6,6 @@ include PrimeEnumerator::EnumeratorSpecHelper
 require 'prime_enumerator/lazy_eratosthenes'
 
 describe PrimeEnumerator::LazyEratosthenes do
-	let(:enumerator) { PrimeEnumerator::LazyEratosthenes.new }
-	common_enumerator_specs
+  let(:enumerator) { PrimeEnumerator::LazyEratosthenes.new }
+  common_enumerator_specs
 end

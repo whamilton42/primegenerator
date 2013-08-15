@@ -3,7 +3,7 @@ class PrimeEnumerator::Eratosthenes < PrimeEnumerator
 
   def initialize(args)
     upper_bound = args.fetch(:upper_bound)
-   	candidates = (0..upper_bound).collect { |num| true }
+     candidates = (0..upper_bound).collect { |num| true }
     prime = 2
 
     super() do |yielder|
